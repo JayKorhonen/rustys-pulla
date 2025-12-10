@@ -1,6 +1,6 @@
 import { Card, CardContent } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
-import type { Recipe } from '@/data/recipes'
+import type { Recipe } from '@/types/recipe'
 import { Dot } from 'lucide-react'
 
 interface RecipeCardProps {
@@ -29,12 +29,15 @@ export function RecipeCard({ recipe }: RecipeCardProps) {
           <div className="mx-auto w-full max-w-full h-px bg-gradient-to-r from-transparent via-accent to-transparent mb-6" />
 
           {/* Description */}
-          <p className="text-center text-foreground/90 leading-relaxed max-w-2xl mx-auto mb-6">
-            {recipe.description}
-          </p>
-
-          {/* Flourish divider */}
-          <div className="mx-auto w-full max-w-md h-px bg-gradient-to-r from-transparent via-accent to-transparent mb-8" />
+          {recipe.description && (
+            <>
+              <p className="text-center text-foreground/90 leading-relaxed max-w-2xl mx-auto mb-6">
+                {recipe.description}
+              </p>
+              {/* Flourish divider */}
+              <div className="mx-auto w-full max-w-md h-px bg-gradient-to-r from-transparent via-accent to-transparent mb-8" />
+            </>
+          )}
 
           {/* Main content grid */}
           <div className="grid grid-cols-1 md:grid-cols-[1fr_1.2fr] gap-8">

@@ -1,10 +1,20 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute, useSearch } from '@tanstack/react-router'
 import { RecipeCard } from '@/components/RecipeCard'
-import { pullaRecipe } from '@/data/recipes'
+import { recipes } from '@/data/recipes'
 
-export const Route = createFileRoute('/')({ component: HomePage })
+export const Route = createFileRoute('/')({
+  component: HomePage,
+  validateSearch: (search: Record<string, unknown>) => {
+    return {
+      recipe: (search.recipe as string) || 'pulla',
+    }
+  },
+})
 
 function HomePage() {
+  const { recipe: recipeId } = useSearch({ from: '/' })
+  const recipe = recipes.find((r) => r.id === recipeId) || recipes[0]
+
   return (
     <div
       className="min-h-screen"
@@ -22,7 +32,7 @@ function HomePage() {
       />
 
       <main className="relative z-10">
-        <RecipeCard recipe={pullaRecipe} />
+        <RecipeCard recipe={recipe} />
       </main>
     </div>
   )

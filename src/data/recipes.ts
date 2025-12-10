@@ -1,23 +1,10 @@
-export interface IngredientGroup {
-  title: string
-  items: string[]
-}
+export type {
+  IngredientGroup,
+  InstructionStep,
+  Recipe,
+} from '@/types/recipe'
 
-export interface InstructionStep {
-  title: string
-  description: string
-}
-
-export interface Recipe {
-  id: string
-  label: string
-  title: string
-  subtitle: string
-  description: string
-  ingredientGroups: IngredientGroup[]
-  instructions: InstructionStep[]
-  footerNote?: string
-}
+import type { Recipe } from '@/types/recipe'
 
 export const pullaRecipe: Recipe = {
   id: 'pulla',
@@ -109,4 +96,6 @@ export const pullaRecipe: Recipe = {
   footerNote: "Rusty's pulla recipe — adjust sugar and cardamom to taste.",
 }
 
-export const recipes: Recipe[] = [pullaRecipe]
+import { importedRecipes } from './imported-recipes'
+
+export const recipes: Recipe[] = [pullaRecipe, ...importedRecipes]
