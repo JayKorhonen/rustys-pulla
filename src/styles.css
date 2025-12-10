@@ -1,0 +1,159 @@
+@import 'tailwindcss';
+
+@import 'tw-animate-css';
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap');
+
+@custom-variant dark (&:is(.dark *));
+
+body {
+  @apply m-0;
+  font-family: 'Outfit', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.font-display {
+  font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+/* Warm coffee and bread theme */
+:root {
+  --background: #faf6f1;
+  --foreground: #3a3029;
+  --card: #ffffff;
+  --card-foreground: #3a3029;
+  --popover: #ffffff;
+  --popover-foreground: #3a3029;
+  --primary: #8b6b48;
+  --primary-foreground: #fefcfa;
+  --secondary: #f2e4d6;
+  --secondary-foreground: #5c4a3d;
+  --muted: #f5ebe0;
+  --muted-foreground: #6b5b4f;
+  --accent: #c9a27c;
+  --accent-foreground: #3a3029;
+  --destructive: #b44d4d;
+  --destructive-foreground: #fefcfa;
+  --border: #e2d5c7;
+  --input: #e2d5c7;
+  --ring: #c9a27c;
+  --chart-1: #8b6b48;
+  --chart-2: #c9a27c;
+  --chart-3: #d4b896;
+  --chart-4: #a67c52;
+  --chart-5: #6b5b4f;
+  --radius: 0.75rem;
+  --sidebar: #f5ebe0;
+  --sidebar-foreground: #3a3029;
+  --sidebar-primary: #8b6b48;
+  --sidebar-primary-foreground: #fefcfa;
+  --sidebar-accent: #f2e4d6;
+  --sidebar-accent-foreground: #5c4a3d;
+  --sidebar-border: #e2d5c7;
+  --sidebar-ring: #c9a27c;
+}
+
+.dark {
+  --background: #1a1614;
+  --foreground: #f5ebe0;
+  --card: #252019;
+  --card-foreground: #f5ebe0;
+  --popover: #252019;
+  --popover-foreground: #f5ebe0;
+  --primary: #d4b896;
+  --primary-foreground: #1a1614;
+  --secondary: #3d322a;
+  --secondary-foreground: #f5ebe0;
+  --muted: #3d322a;
+  --muted-foreground: #a89585;
+  --accent: #c9a27c;
+  --accent-foreground: #1a1614;
+  --destructive: #b44d4d;
+  --destructive-foreground: #fefcfa;
+  --border: #4a3d32;
+  --input: #4a3d32;
+  --ring: #c9a27c;
+  --chart-1: #d4b896;
+  --chart-2: #c9a27c;
+  --chart-3: #a67c52;
+  --chart-4: #8b6b48;
+  --chart-5: #6b5b4f;
+  --sidebar: #252019;
+  --sidebar-foreground: #f5ebe0;
+  --sidebar-primary: #d4b896;
+  --sidebar-primary-foreground: #1a1614;
+  --sidebar-accent: #3d322a;
+  --sidebar-accent-foreground: #f5ebe0;
+  --sidebar-border: #4a3d32;
+  --sidebar-ring: #c9a27c;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Print styles */
+@media print {
+  body {
+    background: #ffffff !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-break-inside-avoid {
+    break-inside: avoid;
+  }
+}
